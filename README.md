@@ -1,5 +1,7 @@
 # Log4Esp32
 
+# WARNING: THIS CODE IS UNDER DEVELOPMENT AND IS NOT READY FOR USE
+
 An Arduino logging framework for ESP32 projects.
 
 The current implementation provides named loggers, severity filtering, pattern
