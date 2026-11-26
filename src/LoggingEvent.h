@@ -1,8 +1,12 @@
 #pragma once
 
-#include <Arduino.h>
 #include <stdint.h>
 #include <string.h>
+#include <time.h>
+
+#ifdef ARDUINO
+#include <Arduino.h>
+#endif
 
 #include "Log4Esp32Config.h"
 #include "LogLevel.h"
@@ -56,8 +60,8 @@ struct LoggingEvent {
                                      ? limit - marker_length
                                      : 0;
     memcpy(destination, source, prefix_length);
-    memcpy(destination + prefix_length, marker,
-           min(marker_length, limit));
+    const size_t marker_copy_length = marker_length < limit ? marker_length : limit;
+    memcpy(destination + prefix_length, marker, marker_copy_length);
     destination[limit] = '\0';
   }
 };
